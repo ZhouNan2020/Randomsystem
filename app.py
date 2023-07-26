@@ -74,14 +74,17 @@ def random_selection(risk_level, available_numbers):
             group = "对照组"
         else:
             group = "试验组"
-        random_number = "ONDEX" + str(random_number)
+        
     elif risk_level == "中风险":
         random_number = random.choice(list(available_numbers))
         if random_number % 2 == 0:
             group = "对照组"
         else:
             group = "试验组"
-        random_number = "ONDEX" + str(random_number)
+        
+    # 将已经随机过的数字append到sheet_B的第一列的尾行
+    sheet_B.append_rows([[random_number]], value_input_option='RAW')
+    random_number = "ONDEX" + str(random_number)
     return random_number, group
 
 random_results = []
