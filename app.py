@@ -81,12 +81,12 @@ if submit_button:
                  else:
                      group = "试验组"
                  random_number = "ONDEX" + str(random_number)
-                 
-        random_time = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8)))
+        random_time = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat()
 
 
+        if st.button("确认随机结果"):
         
-        sheet_A.append_row([random_time,center,patient_id, random_number,risk_level,group],1)       
+            sheet_A.append_row([random_time,center,patient_id, random_number,risk_level,group],1)       
                 
                 
                  
