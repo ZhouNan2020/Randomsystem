@@ -54,8 +54,7 @@ center = st.selectbox("请选择研究中心", ['广西医科大学第一附属�
                                         '南江县人民医院'], key='center')
 patient_id = st.text_input("请输入患者的住院号", key='patient_id')
 
-group = np.nan
-random_number = np.nan
+
 if st.button("开始随机"):
     if risk_level == "高风险":
          # 首先从1-500中排除first_column中已经存在的数字，然后在剩下的数字中随机抽取一个
