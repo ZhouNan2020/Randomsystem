@@ -25,7 +25,7 @@ def connect_to_google_sheet():
 
 
 # Define a function to verify the user's credentials
-
+sheet_A, sheet_B = connect_to_google_sheet()
 
 global center
 global patient_id
@@ -41,7 +41,7 @@ patient_id = None
 # Display a data interface after successful login
 st.header("随机系统")
 risk_level = st.radio("请选择风险分层", ("高风险", "中风险"), key='risk_level')
-sheet_A, sheet_B = connect_to_google_sheet()
+
 first_column = sheet_B.col_values(1)
 available_numbers = set(range(1, 501)) - set(map(int, first_column))
 # 提供一个单选下拉，让用户选择研究中心
@@ -95,9 +95,10 @@ if st.button("开始随机"):
 
 
 
-if st.button("确认随机结果"):
+    if st.button("确认随机结果"):
     # Try a different way to append the results
-    sheet_A.append_rows(random_results, value_input_option='RAW')
+        sheet_A.append_rows([[random_time, center, patient_id, random_number, risk_level, group]], value_input_option='RAW')
+
 
 
 
