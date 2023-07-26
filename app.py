@@ -45,21 +45,21 @@ sheet_A, sheet_B = connect_to_google_sheet()
 first_column = sheet_B.col_values(1)
 available_numbers = set(range(1, 501)) - set(map(int, first_column))
 # 提供一个单选下拉，让用户选择研究中心
-center = st.selectbox("请选择研究中心", ['广西医科大学第一附属医院',	
-                                        '河池市第一人民医院',	
-                                        '百色市人民医院',	
-                                        '平果市人民医院',	
+center = st.selectbox("请选择研究中心", ['广西医科大学第一附属医院',    
+                                        '河池市第一人民医院',    
+                                        '百色市人民医院',    
+                                        '平果市人民医院',    
                                         '来宾市人民医院',
-                                        '武鸣区中医医院',	
-                                        '宾阳县人民医院',	
-                                        '广安市人民医院',	
+                                        '武鸣区中医医院',    
+                                        '宾阳县人民医院',    
+                                        '广安市人民医院',    
                                         '阆中市人民医院',
-                                        '攀枝花市中心医院',	
-                                        '通江县人民医院',	
-                                        '达州市达川区人民医院',	
-                                        '宣汉县人民医院',	
+                                        '攀枝花市中心医院',    
+                                        '通江县人民医院',    
+                                        '达州市达川区人民医院',    
+                                        '宣汉县人民医院',    
                                         '凉山州第一人民医院',
-                                        '巴中市中心医院',	
+                                        '巴中市中心医院',    
                                         '南江县人民医院'], key='center')
 patient_id = st.text_input("请输入患者的住院号", key='patient_id')
 
@@ -67,34 +67,35 @@ patient_id = st.text_input("请输入患者的住院号", key='patient_id')
 random_time = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat()
 
 
-if st.button("开始随机"):
-    global random_number
-    
-    global group
+def random_selection(risk_level, available_numbers):
     if risk_level == "高风险":
-         # 首先从1-500中排除first_column中已经存在的数字，然后在剩下的数字中随机抽取一个
-         random_number = random.choice(list(available_numbers))
-         
-         if random_number % 2 == 0:
-             group = "对照组"
-         else:
-             group = "试验组"
-         random_number = "ONDEX" + str(random_number)
-    elif risk_level == "中风险":
         random_number = random.choice(list(available_numbers))
-        
         if random_number % 2 == 0:
             group = "对照组"
         else:
-                group = "试验组"
+            group = "试验组"
         random_number = "ONDEX" + str(random_number)
-    
+    elif risk_level == "中风险":
+        random_number = random.choice(list(available_numbers))
+        if random_number % 2 == 0:
+            group = "对照组"
+        else:
+            group = "试验组"
+        random_number = "ONDEX" + str(random_number)
+    return random_number, group
+
+random_results = []
+
+if st.button("开始随机"):
+    random_number, group = random_selection(risk_level, available_numbers)
+    random_results.append([random_time, center, patient_id, random_number, risk_level, group])
     st.write(f"random_time: {random_time}, center: {center}, patient_id: {patient_id}, random_number: {random_number}, risk_level: {risk_level}, group: {group}")
 
 
 if st.button("确认随机结果"):
-    
-    sheet_A.append_row([random_time,center,patient_id, random_number,risk_level,group],1)       
+    for result in random_results:
+        sheet_A.append_row(result,1)
+
 
 
                  
