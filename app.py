@@ -97,6 +97,10 @@ if st.button("开始随机"):
     random_results.append([random_time, center, patient_id, random_number, risk_level, group])
     dfrandom_results = pd.DataFrame(random_results, columns=['random_time', 'center', 'patient_id', 'random_number', 'risk_level', 'group'])
     dfrandom_results.columns = ["随机时间", "中心名称", "患者唯一识别码","随机号" ,"风险分层", "分组"]
+    # 使用markdown显示随机结果group，显示字符串“患者被分配到group”
+    st.markdown("患者被分配到**{}**".format(group))
+    # 显示字符串“详细信息如下”
+    st.markdown("详细信息如下")
 
     st.dataframe(dfrandom_results)
     sheet_A.append_rows([[random_time, center, patient_id, random_number, risk_level, group]], value_input_option='RAW')
