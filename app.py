@@ -91,7 +91,7 @@ if st.button("开始随机"):
     random_results.append([random_time, center, patient_id, random_number, risk_level, group])
     dfrandom_results = pd.DataFrame(random_results, columns=['random_time', 'center', 'patient_id', 'random_number', 'risk_level', 'group'])
 
-#st.table(dfrandom_results)
+    st.table(dfrandom_results)
 
 
 
