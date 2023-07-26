@@ -24,7 +24,7 @@ def main():
             # Automatically redirect to the specified URL
             
             # Set a button, click to jump to https://randomsystem.streamlit.app/, label is "Enter Random System"
-            st.markdown('[OpenAI官网](https://openai.com)')
+            st.markdown('[进入随机系统](https://randomsystem.streamlit.app/)')
             
 
 
