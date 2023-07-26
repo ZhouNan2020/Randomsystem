@@ -29,15 +29,13 @@ def connect_to_google_sheet():
 global random_time
 global center
 global patient_id
-global random_number
 global risk_level
-global group
-random_time = None
+risk_level = None
+
+
 center = None
 patient_id = None
-random_number = None
-risk_level = None
-group = None
+
     
         
 # Display a data interface after successful login
@@ -69,10 +67,13 @@ patient_id = st.text_input("请输入患者的住院号", key='patient_id')
 
 
 if st.button("开始随机"):
+    global random_number
+    
+    global group
     if risk_level == "高风险":
          # 首先从1-500中排除first_column中已经存在的数字，然后在剩下的数字中随机抽取一个
          random_number = random.choice(list(available_numbers))
-         group = np.nan
+         
          if random_number % 2 == 0:
              group = "对照组"
          else:
@@ -80,12 +81,13 @@ if st.button("开始随机"):
          random_number = "ONDEX" + str(random_number)
     elif risk_level == "中风险":
         random_number = random.choice(list(available_numbers))
-        group = np.nan
+        
         if random_number % 2 == 0:
             group = "对照组"
         else:
                 group = "试验组"
         random_number = "ONDEX" + str(random_number)
+    global random_time
     random_time = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat()
 
     st.write(f"random_time: {random_time}, center: {center}, patient_id: {patient_id}, random_number: {random_number}, risk_level: {risk_level}, group: {group}")
