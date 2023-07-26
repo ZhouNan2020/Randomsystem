@@ -27,5 +27,5 @@ df = pd.DataFrame(data)
 df.columns = ["随机时间", "中心名称", "患者唯一识别码","随机号" ,"风险分层", "分组"]
 
 
-st.table(df)
+st.table(df, width=1000, height=1000)
 
