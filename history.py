@@ -24,5 +24,8 @@ def connect_to_google_sheet():
 sheet_A = connect_to_google_sheet()
 data = sheet_A.get_all_records()
 df = pd.DataFrame(data)
+df.columns = ["随机时间", "中心名称", "患者唯一识别码（住院号）","随机号" "风险分层", "分组"]
+
+
 st.dataframe(df)
 
