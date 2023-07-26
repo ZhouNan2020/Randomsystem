@@ -89,15 +89,15 @@ random_results = []
 if st.button("开始随机"):
     random_number, group = random_selection(risk_level, available_numbers)
     random_results.append([random_time, center, patient_id, random_number, risk_level, group])
-    random_results = pd.DataFrame(random_results, columns=['random_time', 'center', 'patient_id', 'random_number', 'risk_level', 'group'])
+    dfrandom_results = pd.DataFrame(random_results, columns=['random_time', 'center', 'patient_id', 'random_number', 'risk_level', 'group'])
 
-st.table(random_results)
+st.table(dfrandom_results)
 
 
 
 if st.button("确认随机结果"):
-    for result in random_results:
-        sheet_A.append_row(result,1)
+    # Try a different way to append the results
+    sheet_A.append_rows(random_results, value_input_option='RAW')
 
 
 
