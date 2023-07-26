@@ -30,10 +30,9 @@ df.columns = ["随机时间", "中心名称", "患者唯一识别码","随机号
 st.dataframe(df)
 # 提供下载st.download_button,使用户可以下载df到本地任意路径，文件名为"随机表.csv"
 
-
 def convert_df(df):
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
-    return df.to_csv().encode('utf-8')
+    return df.to_csv().encode('utf-16')
 
 csv = convert_df(df)
 
@@ -43,3 +42,4 @@ st.download_button(
     file_name='随机表.csv',
     mime='text/csv',
     )
+
