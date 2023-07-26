@@ -23,7 +23,11 @@ if submit_button:
         st.success("Login successful")
         # Automatically redirect to the specified URL
         
-        webbrowser.open_new_tab("https://randomsystem.streamlit.app/")
+        # Set a button, click to jump to https://randomsystem.streamlit.app/, label is "Enter Random System"
+        if st.button('进入随机系统'):
+            webbrowser.open_new_tab('https://randomsystem.streamlit.app/')
+
+        
 
 
         
