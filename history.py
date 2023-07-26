@@ -26,6 +26,8 @@ data = sheet_A.get_all_records()
 df = pd.DataFrame(data)
 df.columns = ["随机时间", "中心名称", "患者唯一识别码","随机号" ,"风险分层", "分组"]
 
+# Convert the '患者唯一识别码' column to numeric, errors set to 'coerce' will replace non numeric to NaN
+df['患者唯一识别码'] = pd.to_numeric(df['患者唯一识别码'], errors='coerce')
 
 st.dataframe(df)
 # 提供下载st.download_button,使用户可以下载df到本地任意路径，文件名为"随机表.csv"
@@ -42,4 +44,5 @@ st.download_button(
     file_name='随机表.csv',
     mime='text/csv',
 )
+
 
