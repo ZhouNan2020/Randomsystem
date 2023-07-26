@@ -31,18 +31,9 @@ df['患者唯一识别码'] = pd.to_numeric(df['患者唯一识别码'], errors=
 
 st.dataframe(df)
 # 提供下载st.download_button,使用户可以下载df到本地任意路径，文件名为"随机表.csv"
-def convert_df(df):
-    # IMPORTANT: Cache the conversion to prevent computation on every rerun
-    csv_data = df.to_csv(index=False).encode('utf-8')
-    return csv_data
+df.to_excel('随机表.xlsx', index=False)
+st.download_button(label="Download Excel file", data=pd.read_excel('随机表.xlsx').to_csv(index=False), file_name='随机表.xlsx', mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 
-csv = convert_df(df)
 
-st.download_button(
-    label="下载随机表",
-    data=csv,
-    file_name='随机表.csv',
-    mime='text/csv',
-)
 
 
