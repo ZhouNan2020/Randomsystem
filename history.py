@@ -27,5 +27,19 @@ df = pd.DataFrame(data)
 df.columns = ["随机时间", "中心名称", "患者唯一识别码","随机号" ,"风险分层", "分组"]
 
 
-st.table(df, width=1000, height=1000)
+st.dataframe(df)
+# 提供下载st.download_button,使用户可以下载df到本地任意路径，文件名为"随机表.csv"
 
+@st.cache
+def convert_df(df):
+    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+    return df.to_csv().encode('utf-8')
+
+csv = convert_df(df)
+
+st.download_button(
+    label="下载随机表",
+    data=csv,
+    file_name='随机表.csv',
+    mime='text/csv',
+)
