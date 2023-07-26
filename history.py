@@ -30,10 +30,13 @@ df.columns = ["随机时间", "中心名称", "患者唯一识别码","随机号
 df['患者唯一识别码'] = pd.to_numeric(df['患者唯一识别码'], errors='coerce')
 
 st.dataframe(df)
-# 提供下载st.download_button,使用户可以下载df到本地任意路径，文件名为"随机表.csv"
-df.to_excel('随机表.xlsx', index=False)
-st.download_button(label="Download Excel file", data=pd.read_excel('随机表.xlsx').to_csv(index=False), file_name='随机表.xlsx', mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 
 
-
-
+with pd.ExcelWriter('random.xlsx') as writer:
+                df.to_excel(writer, sheet_name='随机表')
+st.download_button(
+                    label="点击下载",
+                    data=open('random.xlsx', 'rb').read(),
+                    file_name='随机表.xlsx',
+                    mime='application/octet-stream'
+                )
