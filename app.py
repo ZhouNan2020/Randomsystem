@@ -81,6 +81,15 @@ if submit_button:
                  else:
                      group = "试验组"
                  random_number = "ONDEX" + str(random_number)
+
+            elif risk_level == "中风险":
+                random_number = random.choice(list(available_numbers))
+                group = np.nan
+                if random_number % 2 == 0:
+                    group = "对照组"
+                else:
+                    group = "试验组"
+                random_number = "ONDEX" + str(random_number)
         random_time = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat()
 
 
