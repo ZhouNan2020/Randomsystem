@@ -95,31 +95,10 @@ if st.button("开始随机"):
     dfrandom_results = pd.DataFrame(random_results, columns=['random_time', 'center', 'patient_id', 'random_number', 'risk_level', 'group'])
 
     st.table(dfrandom_results)
-
-
-
-    
     sheet_A.append_rows([[random_time, center, patient_id, random_number, risk_level, group]], value_input_option='RAW')
-    if st.button("确认随机结果"):
-        st.success("随机成功")
-        last_row = len(sheet_A.get_all_values())  # 获取表格的行数
-        sheet_A.update_cell(last_row, 7, "已启用") 
+    
 
-
-
-                 
-                 
-
-                 
-
-             
-
-        
-
-
-        # Display a dataframe with example data
-        
-
+st.markdown('[查看随机历史](https://randomsystem.streamlit.app/)')
 
 
 
