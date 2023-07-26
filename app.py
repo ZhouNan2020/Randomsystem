@@ -102,7 +102,7 @@ if st.button("开始随机"):
     sheet_A.append_rows([[random_time, center, patient_id, random_number, risk_level, group]], value_input_option='RAW')
     
 
-st.markdown('[查看随机历史](https://randomsystem.streamlit.app/)')
+st.markdown('[查看随机历史](https://randomhistory.streamlit.app/)')
 
 
 
