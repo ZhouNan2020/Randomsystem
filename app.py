@@ -97,6 +97,9 @@ if st.button("开始随机"):
 
     
     sheet_A.append_rows([[random_time, center, patient_id, random_number, risk_level, group]], value_input_option='RAW')
+    if st.button("确认随机结果"):
+        st.success("随机成功")
+        sheet_A.append_rows([[random_time, center, patient_id, random_number, risk_level, group, "已启用"]], value_input_option='RAW')
 
 
 
