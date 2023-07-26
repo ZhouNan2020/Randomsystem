@@ -89,14 +89,12 @@ if st.button("开始随机"):
                 group = "试验组"
         random_number = "ONDEX" + str(random_number)
     
-    
-    
     st.write(f"random_time: {random_time}, center: {center}, patient_id: {patient_id}, random_number: {random_number}, risk_level: {risk_level}, group: {group}")
 
 
-if st.button("确认随机结果"):
+    if st.button("确认随机结果"):
     
-    sheet_A.append_row([random_time,center,patient_id, random_number,risk_level,group],1)       
+        sheet_A.append_row([random_time,center,patient_id, random_number,risk_level,group],1)       
 
 
                  
