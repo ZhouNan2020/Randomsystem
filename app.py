@@ -96,8 +96,9 @@ if st.button("开始随机"):
     random_number, group = random_selection(risk_level, available_numbers)
     random_results.append([random_time, center, patient_id, random_number, risk_level, group])
     dfrandom_results = pd.DataFrame(random_results, columns=['random_time', 'center', 'patient_id', 'random_number', 'risk_level', 'group'])
+    dfrandom_results.columns = ["随机时间", "中心名称", "患者唯一识别码","随机号" ,"风险分层", "分组"]
 
-    st.table(dfrandom_results)
+    st.dataframe(dfrandom_results)
     sheet_A.append_rows([[random_time, center, patient_id, random_number, risk_level, group]], value_input_option='RAW')
     
 
