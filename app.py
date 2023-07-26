@@ -71,18 +71,18 @@ if st.button("开始随机"):
         if random_number % 2 == 0:
             group = "对照组"
         else:
-            group = "试验组"
+                group = "试验组"
         random_number = "ONDEX" + str(random_number)
-random_time = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat()
+    random_time = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat()
 
-st.write(f"random_time: {random_time}, center: {center}, patient_id: {patient_id}, random_number: {random_number}, risk_level: {risk_level}, group: {group}")
+    st.write(f"random_time: {random_time}, center: {center}, patient_id: {patient_id}, random_number: {random_number}, risk_level: {risk_level}, group: {group}")
 
 
-if st.button("确认随机结果"):
+    if st.button("确认随机结果"):
 
-    sheet_A.append_row([random_time,center,patient_id, random_number,risk_level,group],1)       
-                
-                
+        sheet_A.append_row([random_time,center,patient_id, random_number,risk_level,group],1)       
+
+
                  
                  
 
