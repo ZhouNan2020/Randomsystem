@@ -4,7 +4,7 @@ import gspread
 import numpy as np
 import random
 from oauth2client.service_account import ServiceAccountCredentials
-
+import datetime
 
 
 def connect_to_google_sheet():
@@ -81,8 +81,12 @@ if submit_button:
                  else:
                      group = "试验组"
                  random_number = "ONDEX" + str(random_number)
+                 
+        random_time = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8)))
 
-        sheet_A.append_row([center,patient_id, random_number,risk_level,group],1)       
+
+        
+        sheet_A.append_row([random_time,center,patient_id, random_number,risk_level,group],1)       
                 
                 
                  
