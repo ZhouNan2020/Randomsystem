@@ -3,6 +3,7 @@ import pandas as pd
 import gspread
 import numpy as np
 import random
+from oauth2client.service_account import ServiceAccountCredentials
 
 
 
@@ -65,6 +66,9 @@ if submit_button:
                                                 '凉山州第一人民医院'
                                                 '巴中市中心医院'	
                                                 '南江县人民医院'])
+        patient_id = st.text_input("请输入患者的住院号")
+
+        
         group = np.nan
         random_number = np.nan
         if st.button("开始随机"):
@@ -76,6 +80,9 @@ if submit_button:
                      group = "对照组"
                  else:
                      group = "试验组"
+                 random_number = "ONDEX" + str(random_number)
+
+        sheet_A.append_row([center,patient_id, random_number,risk_level,group],1)       
                 
                 
                  
