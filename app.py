@@ -45,7 +45,7 @@ center = st.selectbox("请选择研究中心", ['广西医科大学第一附属�
                                         '凉山州第一人民医院',
                                         '巴中市中心医院',	
                                         '南江县人民医院'])
-patient_id = st.text_input("请输入患者的住院号"
+patient_id = st.text_input("请输入患者的住院号")
 
 group = np.nan
 random_number = np.nan
@@ -58,7 +58,7 @@ if st.button("开始随机"):
              group = "对照组"
          else:
              group = "试验组"
-         random_number = "ONDEX" + str(random_number
+         random_number = "ONDEX" + str(random_number)
     elif risk_level == "中风险":
         random_number = random.choice(list(available_numbers))
         group = np.nan
@@ -67,7 +67,7 @@ if st.button("开始随机"):
         else:
             group = "试验组"
         random_number = "ONDEX" + str(random_number)
-random_time = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat(
+random_time = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat()
 if st.button("确认随机结果"):
 
     sheet_A.append_row([random_time,center,patient_id, random_number,risk_level,group],1)       
