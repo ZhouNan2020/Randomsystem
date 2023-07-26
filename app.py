@@ -95,9 +95,8 @@ if st.button("开始随机"):
 
 
 
-    if st.button("确认随机结果"):
-    # Try a different way to append the results
-        sheet_A.append_rows([[random_time, center, patient_id, random_number, risk_level, group]], value_input_option='RAW')
+    
+    sheet_A.append_rows([[random_time, center, patient_id, random_number, risk_level, group]], value_input_option='RAW')
 
 
 
