@@ -26,7 +26,18 @@ def connect_to_google_sheet():
 
 # Define a function to verify the user's credentials
 
-
+global random_time
+global center
+global patient_id
+global random_number
+global risk_level
+global group
+random_time = None
+center = None
+patient_id = None
+random_number = None
+risk_level = None
+group = None
     
         
 # Display a data interface after successful login
@@ -53,6 +64,8 @@ center = st.selectbox("请选择研究中心", ['广西医科大学第一附属�
                                         '巴中市中心医院',	
                                         '南江县人民医院'], key='center')
 patient_id = st.text_input("请输入患者的住院号", key='patient_id')
+
+
 
 
 if st.button("开始随机"):
