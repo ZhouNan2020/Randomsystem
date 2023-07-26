@@ -39,7 +39,8 @@ patient_id = None
     
         
 # Display a data interface after successful login
-st.header("随机系统")
+st.markdown("# ONDEX研究随机系统", unsafe_allow_html=True)
+
 risk_level = st.radio("请选择风险分层", ("高风险", "中风险"), key='risk_level')
 
 first_column = sheet_B.col_values(1)
@@ -90,7 +91,8 @@ def random_selection(risk_level, available_numbers):
 random_results = []
 
 if st.button("开始随机"):
-    
+    st.spinner(text="In progress...")
+
     random_number, group = random_selection(risk_level, available_numbers)
     random_results.append([random_time, center, patient_id, random_number, risk_level, group])
     dfrandom_results = pd.DataFrame(random_results, columns=['random_time', 'center', 'patient_id', 'random_number', 'risk_level', 'group'])
